@@ -21,7 +21,7 @@ class AttendanceController extends Controller
     // Display the attendance page
     public function index(Request $request)
     {
-        $ip = $request->ip();
+        $ip = file_get_contents('https://api.ipify.org');
         $user = Auth::user();
         $today = now()->toDateString();
         $existing = Attendance::where('user_id', $user->id)->where('date', $today)->first();
@@ -35,7 +35,7 @@ class AttendanceController extends Controller
     public function clockIn(Request $request)
     {
         // Validate IP address against whitelisted IPs
-        $ip = $request->ip();
+        $ip = file_get_contents('https://api.ipify.org');
         if (!in_array($ip, $this->whitelistedIps)) {
             return back()->withErrors([
                 'ip' => 'Clock in is not allowed on this IP Address.',
@@ -68,7 +68,7 @@ class AttendanceController extends Controller
     public function clockOut(Request $request)
     {
         // Validate IP address against whitelisted IPs
-        $ip = $request->ip();
+        $ip = file_get_contents('https://api.ipify.org');
         if (!in_array($ip, $this->whitelistedIps)) {
             return back()->withErrors([
                 'ip' => 'Clock out is not allowed on this IP Address.',
