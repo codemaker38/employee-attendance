@@ -16,7 +16,6 @@
                     <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <h5 class="mb-4 text-2xl text-center text-white font-extrabold tracking-tight flex items-center justify-center">
                             <span class="flex items-center text-2xl font-semibold text-gray-900 dark:text-white">
-                                <img class="w-8 h-8 mr-2" src="{{ 'storage/' . setting('site.logo') }}" alt="{{ setting('site.title') }} logo">
                                 {{ setting('site.title') }}
                             </span>
                         </h5>
